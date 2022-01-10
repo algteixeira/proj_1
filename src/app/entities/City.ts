@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryColumn } from "typeorm";
-import { v4 as uuid }from "uuid"
+import { v4 as uuid } from "uuid"
 
 @Entity("city")
 export class City {
@@ -11,7 +11,7 @@ export class City {
     state: string;
 
     constructor() {
-        if(!this.id) {
+        if (!this.id) {
             this.id = uuid()
         }
     }
