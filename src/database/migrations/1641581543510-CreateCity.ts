@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class City1641822913312 implements MigrationInterface {
+export class CreateCity1641581543510 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
@@ -8,26 +8,27 @@ export class City1641822913312 implements MigrationInterface {
                 name: "city",
                 columns: [
                     {
+                        name: "id",
+                        type: "uuid",
+                        isPrimary: true
+                    }, 
+                    {
                         name: "name",
                         type: "varchar",
-                        isUnique:true
+                        isUnique: true
                     },
                     {
-                        name: 'id',
-                        type: 'uuid',
-                        isPrimary: true
-                    },
-                    {
-                        name:"state",
+                        name: "state",
                         type: "varchar"
-                    }
+                    },
+                    
                 ]
             })
         )
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("city");
+        await queryRunner.dropTable("city")
     }
 
 }
