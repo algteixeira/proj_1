@@ -11,10 +11,18 @@ class CityRepository {
     return city;
   }
 
-  async get(payload) : Promise<City[]> {
+  async get(payload) : Promise<Object> {
+    const limit = payload.limit?  payload.limit : 3;
+    const page=payload.page || 1;
+    const skip = (page-1) * limit ;
+    delete payload.limit;
+    delete payload.page;
     const repo = getRepository(City);
-    const city = await repo.find(payload);
-    return city;
+    const data = await repo.findAndCount({
+      where:  payload , take: limit,
+      skip: skip
+    });
+    return data;
   }
 }
 

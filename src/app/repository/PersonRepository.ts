@@ -18,10 +18,9 @@ export class PersonRepository {
     delete payload.page;
     const repo = getRepository(Person);
     const data = await repo.findAndCount({
-        where: { name: payload.name }, take: limit,
+        where: payload, take: limit,
         skip: skip
     });
-    //const person = await repo.find(payload);
     return data;
   }
 

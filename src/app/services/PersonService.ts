@@ -11,7 +11,7 @@ export class PersonService {
     async create (payload) : Promise<Person | Error> {
         const {name, city_id, birthday} = payload;
         const registrated_city = await cityRepo.get({id: city_id});
-        if (registrated_city.length===0) {
+        if (registrated_city[1]===0) {
             throw new Error("Invalid city");
         }
         payload.age = getAge(birthday);
