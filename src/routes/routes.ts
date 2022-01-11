@@ -7,11 +7,12 @@ import { GetAllPersonController } from "../app/controllers/GetAllPersonControlle
 import { GetPersonByIdController } from "../app/controllers/GetPersonByIdController";
 import { UpdatePersonController } from "../app/controllers/UpdatePersonController";
 import createCityValidation from "../app/validations/city/createCityValidation";
+import getAllCityValidation from "../app/validations/city/getAllCityValidation";
 
 const routes = Router();
 
 routes.post("/cidade", createCityValidation ,new CreateCityController().handle);
-routes.get("/cidade", new GetAllCityController().handle);
+routes.get("/cidade", getAllCityValidation ,new GetAllCityController().handle);
 routes.post("/pessoa", new CreatePersonController().handle);
 routes.get("/pessoa", new GetAllPersonController().handle);
 routes.get("/pessoa/:id", new GetPersonByIdController().handle);
