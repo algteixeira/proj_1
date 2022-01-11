@@ -15,13 +15,13 @@ export class CreateCityService {
             return new Error("Category already exists");
         }
 
-        const category = repo.create({
+        const city = repo.create({
             name, 
             state
         })
 
-        await repo.save(category);
+        await repo.save(city);
 
-        return category;
+        return city;
     }
 }

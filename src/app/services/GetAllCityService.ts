@@ -4,8 +4,8 @@ import { City } from "../entities/City";
 export class GetAllCityService {
     async execute(obj) {
         const repo = getRepository(City);
-        const categories = await repo.find(obj);
+        const cities = await repo.find(obj);
 
-        return categories;
+        return cities;
     }
 }

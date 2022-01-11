@@ -5,8 +5,8 @@ export class GetAllCityController {
     async handle(request:Request, response:Response) {
         const service = new GetAllCityService();
 
-        const categories = await service.execute(request.query);
+        const cities = await service.execute(request.query);
 
-        return response.json(categories);
+        return response.json(cities);
     }
 }
