@@ -6,10 +6,11 @@ import { GetAllCityController } from "../app/controllers/GetAllCityController";
 import { GetAllPersonController } from "../app/controllers/GetAllPersonController";
 import { GetPersonByIdController } from "../app/controllers/GetPersonByIdController";
 import { UpdatePersonController } from "../app/controllers/UpdatePersonController";
+import createCityValidation from "../app/validations/city/createCityValidation";
 
 const routes = Router();
 
-routes.post("/cidade", new CreateCityController().handle);
+routes.post("/cidade", createCityValidation ,new CreateCityController().handle);
 routes.get("/cidade", new GetAllCityController().handle);
 routes.post("/pessoa", new CreatePersonController().handle);
 routes.get("/pessoa", new GetAllPersonController().handle);
