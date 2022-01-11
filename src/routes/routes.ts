@@ -11,6 +11,7 @@ import getAllCityValidation from "../app/validations/city/getAllCityValidation";
 import createPersonValidation from "../app/validations/person/createPersonValidation";
 import getAllPersonValidation from "../app/validations/person/getAllPersonValidation";
 import getPersonByIdValidation from "../app/validations/person/getPersonByIdValidation";
+import updatePersonValidation from "../app/validations/person/updatePersonValidation";
 
 const routes = Router();
 
@@ -19,7 +20,7 @@ routes.get("/cidade", getAllCityValidation ,new GetAllCityController().handle);
 routes.post("/pessoa", createPersonValidation ,new CreatePersonController().handle);
 routes.get("/pessoa", getAllPersonValidation ,new GetAllPersonController().handle);
 routes.get("/pessoa/:id", getPersonByIdValidation ,new GetPersonByIdController().handle);
-routes.delete("/pessoa/:id", new DeletePersonController().handle);
-routes.put("/pessoa/:id", new UpdatePersonController().handle);
+routes.delete("/pessoa/:id", getPersonByIdValidation, new DeletePersonController().handle);
+routes.put("/pessoa/:id", getPersonByIdValidation, updatePersonValidation ,new UpdatePersonController().handle);
 
 export { routes };
