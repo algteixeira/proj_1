@@ -8,12 +8,13 @@ import { GetPersonByIdController } from "../app/controllers/GetPersonByIdControl
 import { UpdatePersonController } from "../app/controllers/UpdatePersonController";
 import createCityValidation from "../app/validations/city/createCityValidation";
 import getAllCityValidation from "../app/validations/city/getAllCityValidation";
+import createPersonValidation from "../app/validations/person/createPersonValidation";
 
 const routes = Router();
 
 routes.post("/cidade", createCityValidation ,new CreateCityController().handle);
 routes.get("/cidade", getAllCityValidation ,new GetAllCityController().handle);
-routes.post("/pessoa", new CreatePersonController().handle);
+routes.post("/pessoa", createPersonValidation ,new CreatePersonController().handle);
 routes.get("/pessoa", new GetAllPersonController().handle);
 routes.get("/pessoa/:id", new GetPersonByIdController().handle);
 routes.delete("/pessoa/:id", new DeletePersonController().handle);
