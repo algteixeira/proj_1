@@ -11,7 +11,7 @@ export class Person {
     @Column()
     sex: string;
     @Column()
-    birthday: Date;
+    birthday: string;
     @Column()
     age: number;
     @Column()

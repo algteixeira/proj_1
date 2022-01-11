@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class Person1641822922802 implements MigrationInterface {
+export class CreatePerson1641583311790 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
@@ -8,29 +8,30 @@ export class Person1641822922802 implements MigrationInterface {
                 name: "person",
                 columns: [
                     {
-                        name: "name",
-                        type: "varchar"
-                    },
-                    {
-                        name: 'id',
-                        type: 'uuid',
+                        name: "id",
+                        type: "uuid",
                         isPrimary: true
+                    }, 
+                    {
+                        name: "name",
+                        type: "varchar",
+                        isUnique: true
                     },
                     {
                         name: "sex",
                         type: "varchar"
                     },
                     {
+                        name: "city_id",
+                        type: "uuid"
+                    },
+                    {
                         name: "birthday",
-                        type: "date"
+                        type: "varchar"
                     },
                     {
                         name: "age",
-                        type: "int"
-                    },
-                    {
-                        name: "city_id",
-                        type: "uuid"
+                        type: "numeric"
                     }
                 ],
                 foreignKeys: [
@@ -46,7 +47,8 @@ export class Person1641822922802 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("person");
+        await queryRunner.dropTable("videos")
     }
 
 }
+// this is the relevant

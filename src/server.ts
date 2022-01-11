@@ -4,7 +4,7 @@ import express from "express";
 
 import {routes} from "./routes/routes"; 
 
-import "./database";
+import "./infra/database/postgres";
 
 const app = express();
 
