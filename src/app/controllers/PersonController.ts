@@ -15,7 +15,7 @@ export class PersonController {
 
     async get (request: Request, response: Response) {
         try {
-            const result = await personService.get(request.query);            
+            const result = await personService.get(request.query);           
             return response.status(200).json(result);
         } catch (error) {
             return response.status(400).json(error.message);

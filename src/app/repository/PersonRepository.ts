@@ -10,10 +10,19 @@ export class PersonRepository {
     return person;
   }
 
-  async get(payload) : Promise<Person[]> {
+  async get(payload) : Promise<Object> {
+    const limit = payload.limit?  payload.limit : 3;
+    const page=payload.page || 1;
+    const skip = (page-1) * limit ;
+    delete payload.limit;
+    delete payload.page;
     const repo = getRepository(Person);
-    const person = await repo.find(payload);
-    return person;
+    const data = await repo.findAndCount({
+        where: { name: payload.name }, take: limit,
+        skip: skip
+    });
+    //const person = await repo.find(payload);
+    return data;
   }
 
   async getById(payload) : Promise<Person> {

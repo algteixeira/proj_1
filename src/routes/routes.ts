@@ -1,11 +1,6 @@
 import { Router } from "express";
 import { CityController } from "../app/controllers/CityController";
 import { PersonController } from "../app/controllers/PersonController"; 
-import { CreatePersonController } from "../app/controllers/CreatePersonController";
-import { DeletePersonController } from "../app/controllers/DeletePersonController";
-import { GetAllPersonController } from "../app/controllers/GetAllPersonController";
-import { GetPersonByIdController } from "../app/controllers/GetPersonByIdController";
-import { UpdatePersonController } from "../app/controllers/UpdatePersonController";
 import createCityValidation from "../app/validations/city/createCityValidation";
 import getAllCityValidation from "../app/validations/city/getAllCityValidation";
 import createPersonValidation from "../app/validations/person/createPersonValidation";

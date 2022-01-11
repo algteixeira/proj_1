@@ -14,8 +14,7 @@ export class CreatePerson1641583311790 implements MigrationInterface {
                     }, 
                     {
                         name: "name",
-                        type: "varchar",
-                        isUnique: true
+                        type: "varchar"
                     },
                     {
                         name: "sex",

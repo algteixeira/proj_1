@@ -4,7 +4,9 @@ import { NextFunction, Request, Response } from 'express';
 export default async (request: Request, response: Response, next: NextFunction): Promise<void | Response> => {
   try {
     const schema = Joi.object({
-      name: Joi.string().trim().min(3)      
+      name: Joi.string().trim().min(3),
+      page: Joi.number().min(1),
+      limit: Joi.number().min(1)      
     });
 
     const { error } = schema.validate(request.query, { abortEarly: false });

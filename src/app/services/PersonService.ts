@@ -2,6 +2,7 @@ import { PersonRepository } from "../repository/PersonRepository";
 import { CityRepository } from "../repository/CityRepository"; 
 import { Person } from "../entities/Person";
 import { getAge } from "../utils/dates";
+import { serializePeople } from "../serialize/PersonSerialize";
 
 const personRepo = new PersonRepository();
 const cityRepo = new CityRepository();
@@ -9,11 +10,7 @@ const cityRepo = new CityRepository();
 export class PersonService {
     async create (payload) : Promise<Person | Error> {
         const {name, city_id, birthday} = payload;
-        const isEmpty = await personRepo.get({name});
         const registrated_city = await cityRepo.get({id: city_id});
-        if (isEmpty.length!==0) {
-            throw new Error("This person already exists in the database");
-        }
         if (registrated_city.length===0) {
             throw new Error("Invalid city");
         }
@@ -22,9 +19,10 @@ export class PersonService {
         return person;
     }
 
-    async get (payload) : Promise<Person[]> {
+    async get (payload) : Promise<Object> {
         const person = await personRepo.get(payload);
-        return person;
+        const data = serializePeople(person['0'], person['1']);
+        return data;
     }
 
     async getById (payload) : Promise<Person> {
