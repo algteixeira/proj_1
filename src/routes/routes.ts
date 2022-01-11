@@ -1,8 +1,7 @@
 import { Router } from "express";
-import { CreateCityController } from "../app/controllers/CreateCityController";
+import { CityController } from "../app/controllers/CityController";
 import { CreatePersonController } from "../app/controllers/CreatePersonController";
 import { DeletePersonController } from "../app/controllers/DeletePersonController";
-import { GetAllCityController } from "../app/controllers/GetAllCityController";
 import { GetAllPersonController } from "../app/controllers/GetAllPersonController";
 import { GetPersonByIdController } from "../app/controllers/GetPersonByIdController";
 import { UpdatePersonController } from "../app/controllers/UpdatePersonController";
@@ -15,8 +14,8 @@ import updatePersonValidation from "../app/validations/person/updatePersonValida
 
 const routes = Router();
 
-routes.post("/cidade", createCityValidation ,new CreateCityController().handle);
-routes.get("/cidade", getAllCityValidation ,new GetAllCityController().handle);
+routes.post("/cidade", createCityValidation ,new CityController().create);
+routes.get("/cidade", getAllCityValidation ,new CityController().get);
 routes.post("/pessoa", createPersonValidation ,new CreatePersonController().handle);
 routes.get("/pessoa", getAllPersonValidation ,new GetAllPersonController().handle);
 routes.get("/pessoa/:id", getPersonByIdValidation ,new GetPersonByIdController().handle);
