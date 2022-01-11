@@ -2,7 +2,7 @@ import "reflect-metadata";
 
 import express from "express";
 
-import {routes} from "./routes/routes"; 
+import {routes} from "./routes/index"; 
 
 import "./infra/database/postgres";
 
