@@ -8,8 +8,8 @@ export class CityController {
         try {
             const result = await cityService.create(request.body);
             return response.status(201).json(result);
-        } catch (err) {
-            return response.status(400).json(err.message);
+        } catch (error) {
+            return response.status(error.statusCode).json(error.description);
         }
     }
 

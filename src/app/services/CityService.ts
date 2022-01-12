@@ -1,6 +1,7 @@
 import { CityRepository } from "../repository/CityRepository"; 
 import { City } from "../entities/City";
 import { serializeCity } from "../serialize/CitySerialize";
+import { AlreadyExists } from "../errors/alreadyExists";
 
 const cityRepo = new CityRepository();
 
@@ -9,7 +10,7 @@ export class CityService {
         const {name} = payload;
         const isEmpty = await cityRepo.get({name});
         if (isEmpty[1]!==0) {
-            throw new Error("This city already exists in the database");
+            throw new AlreadyExists(name);
         }
         const city = await cityRepo.create(payload);
         return city;
