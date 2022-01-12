@@ -1,0 +1,432 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Compassolissa",
+        "description": "This is the final project for Compasso UOL trainee's program",
+        "contact": {
+            "email": "andre.teixeira_bols@compasso.uol.com.br"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000",
+            "description": "Base URL to use the first version of this project"
+        }
+    ],
+
+    "components": {
+        "schemas": {
+            "Person": {
+                "type": "object",
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "sex": {
+                        "type": "string"
+                    },
+                    "data_nascimento": {
+                        "type": "string"
+                    },
+                    "age": {
+                        "type": "number"
+                    },
+                    "city_id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "People": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/Person"
+                }
+            },
+            "City": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Cities": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/City"
+                }
+            }    
+        }        
+    },
+
+    "paths": {
+        "/pessoa": {
+            "post": {
+                "summary": "Insert a person into the database",
+                "description": "This route uses req.body to get information about the person, than validate it and insert into the database",
+                "tags": [
+                    "People"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Person"
+                            },
+                            "examples": {
+                                "person": {
+                                    "value": {
+                                        "nome": "joaozinho ciclano",
+                                        "cpf": "131.147.860-49",
+                                        "data_nascimento": "03/03/2021",
+                                        "email": "joazinho@email.com",
+                                        "senha": "123456",
+                                        "habilitado": "sim"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "It shows up when req.body have invalid items to insert, person is an underage or already exists in the database"
+                    },
+                    "201": {
+                        "description": "It shows up when person is created with success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Person"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Get all people from the database that match with the queries using pagination",
+                "description": "Pagination style = http://localhost:3333/api/v1/car/?page=1&limit=10",
+                "tags": [
+                    "People"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "It shows up in every request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/People"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Throws it if the request have bad format on the queries"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "The number of cars to show per page. OBRIGATORY QUERY",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "The page to show with (limit) amount of cars. OBRIGATORY QUERY",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "nome",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The person name to find"
+                    },
+                    {
+                        "in": "query",
+                        "name": "cpf",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The CPF to search for"
+                    },
+                    {
+                        "in": "query",
+                        "name": "data_nascimento",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The birthday to find for"
+                    },
+                    {
+                        "in": "query",
+                        "name": "email",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The email to search for"
+                    },
+                    {
+                        "in": "query",
+                        "name": "habilitado",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Search based if person have a driver's license"
+                    }
+                ]
+            }
+        },
+        "/cidade": {
+            "post": {
+                "summary": "Insert a city into the database",
+                "description": "This route uses req.body to get information about the city and put it in the database",
+                "tags": [
+                    "City"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/City"
+                            },
+                            "examples": {
+                                "city": {
+                                    "value": {
+                                        "name": "Pelotas",
+                                        "state": "RS"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "It shows up when city is created with success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/City"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "It shows up when req.body have invalid items to insert"
+                    }
+                }
+            },
+            "get": {              
+                "summary": "Get all city from the database that match with the queries using pagination",
+                "description": "Pagination style = http://localhost:3333/api/v1/car/?page=1&limit=10",
+                "tags": [
+                    "Cities"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "It shows up in every request, throwing an array with all cities matching your query",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Cities"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "The number of cities to show per page.",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "page",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "The page to show with (limit) amount of cities.",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "name",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The city name to search for"
+                    },
+                    {
+                        "in": "query",
+                        "name": "state",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The state to get cities from"
+                    }
+                ]
+            }
+        },
+        "/pessoa/{id}": {
+            "delete": {
+                "security": [{ "bearerAuth": [] }],
+                "summary": "Route to delete a car based on it's id",
+                "description": "Try to find a vehicle and delete it",
+                "tags": [
+                    "Car"
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Throw a NotFound, telling that there's no car with this id in the database"
+                    },
+                    "204": {
+                        "description": "Car excluded with success"
+                    },
+                    "400": {
+                        "description": "Invalid id format"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": "true",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            },
+            "put": {
+                "security": [{ "bearerAuth": [] }],
+                "summary": "Update car values",
+                "description": "Using a car ID, search for it and if it founds, put new values (avoiding duplicates on accessories)",
+                "tags": [
+                    "Car"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Car updated with success"
+                    },
+                    "400": {
+                        "description": "Wrong id or content format"
+                    },
+                    "404": {
+                        "description": "Car not found"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": "true",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Car"
+                            },
+                            "examples": {
+                                "car": {
+                                    "value": {
+                                        "modelo": "GM S10 2.8",
+                                        "cor": "branco",
+                                        "ano": "2021",
+                                        "acessorios": [
+                                            {
+                                                "descricao": "Ar-condicionado"
+                                            },
+                                            {
+                                                "descricao": "Dir. Hidráulica"
+                                            },
+                                            {
+                                                "descricao": "Cabine Dupla"
+                                            },
+                                            {
+                                                "descricao": "Tração 4x4"
+                                            },
+                                            {
+                                                "descricao": "4 portas"
+                                            },
+                                            {
+                                                "descricao": "Diesel"
+                                            },
+                                            {
+                                                "descricao": "Air bag"
+                                            },
+                                            {
+                                                "descricao": "ABS"
+                                            }
+                                        ],
+                                        "quantidadePassageiros": 5
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "security": [{ "bearerAuth": [] }],
+                "summary": "Get car by id",
+                "description": "Return a car based on its id",
+                "tags": [
+                    "Car"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return a car with passed ID"
+                    },
+                    "400": {
+                        "description": "Invalid id format"
+                    },
+                    "404": {
+                        "description":"Car not found"
+                    }
+                
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": "true",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        }
+        
+    }
+    
+}
