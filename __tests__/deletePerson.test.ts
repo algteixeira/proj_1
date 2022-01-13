@@ -1,4 +1,5 @@
 import request from 'supertest';
+import { getConnection } from 'typeorm';
 import { app } from '../src/app';
 import { connect } from "../src/infra/database/postgres";
 
@@ -6,10 +7,36 @@ beforeAll(async() => {
     await connect();
 });
 
+afterEach(async() => {
+  const entities = getConnection().entityMetadatas;
+  for (const entity of entities) {
+    const repository = await getConnection().getRepository(entity.name);
+    await repository.query(`TRUNCATE ${entity.tableName} RESTART IDENTITY CASCADE;`);
+  }
+});
+
 
 describe('This test should delete a person and', () => {
   it('should return an empty body with 204 statuscode', async () => {
-    const response = await request(app).delete('/pessoa/9df859a7-602d-4262-a8a3-c62dd0c73a11');
+    const city = {
+      'name': 'Pelotas',
+      'state': 'RS'
+    };
+    let response = await request(app).post('/cidade').send(city);
+
+    expect(response.status).toBe(201);
+    let { id } = response.body;
+    const pessoa = {
+      'name': 'jota',
+      'birthday': '19/08/1997',
+      'city_id': id,
+      'sex' : 'MASCULINO'
+    };
+    response = await request(app).post('/pessoa').send(pessoa);
+
+    expect(response.status).toBe(201);
+
+    response = await request(app).delete(`/pessoa/${response.body.id}`);
 
     expect(response.status).toBe(204);
   });

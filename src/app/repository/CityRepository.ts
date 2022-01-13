@@ -12,8 +12,8 @@ class CityRepository {
   }
 
   async get(payload) : Promise<Object> {
-    const limit = payload.limit?  payload.limit : 3;
-    const page=payload.page || 1;
+    const limit = payload.limit || 3;
+    const page = payload.page || 1;
     const skip = (page-1) * limit ;
     delete payload.limit;
     delete payload.page;

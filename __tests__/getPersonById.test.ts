@@ -1,4 +1,5 @@
 import request from 'supertest';
+import { getConnection } from 'typeorm';
 import { app } from '../src/app';
 import { connect } from "../src/infra/database/postgres";
 
@@ -6,10 +7,36 @@ beforeAll(async() => {
     await connect();
 });
 
+afterEach(async() => {
+  const entities = getConnection().entityMetadatas;
+  for (const entity of entities) {
+    const repository = await getConnection().getRepository(entity.name);
+    await repository.query(`TRUNCATE ${entity.tableName} RESTART IDENTITY CASCADE;`);
+  }
+});
+
 
 describe('This test should run fine and', () => {
   it('should return a person', async () => {
-    const response = await request(app).get('/pessoa/767093e9-5f87-402f-beea-005b520bb341');
+    const city = {
+      'name': 'Pelotas',
+      'state': 'RS'
+    };
+    let response = await request(app).post('/cidade').send(city);
+
+    expect(response.status).toBe(201);
+    let { id } = response.body;
+    const pessoa = {
+      'name': 'jota',
+      'birthday': '19/08/1997',
+      'city_id': id,
+      'sex' : 'MASCULINO'
+    };
+    response = await request(app).post('/pessoa').send(pessoa);
+
+    expect(response.status).toBe(201);
+
+    response = await request(app).get(`/pessoa/${response.body.id}`);
 
     expect(response.status).toBe(200);
   });
