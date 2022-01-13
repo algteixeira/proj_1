@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1642082354593" clover="3.2.0">
-  <project timestamp="1642082354593" name="All files">
-    <metrics statements="594" coveredstatements="474" conditionals="49" coveredconditionals="41" methods="42" coveredmethods="31" elements="685" coveredelements="546" complexity="0" loc="594" ncloc="594" packages="13" files="27" classes="27"/>
+<coverage generated="1642085023562" clover="3.2.0">
+  <project timestamp="1642085023562" name="All files">
+    <metrics statements="507" coveredstatements="455" conditionals="48" coveredconditionals="40" methods="38" coveredmethods="31" elements="593" coveredelements="526" complexity="0" loc="507" ncloc="507" packages="12" files="25" classes="25"/>
     <package name="src">
       <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="app.ts" path="C:\Users\andre.teixeira\Documents\PROJETOS\proj_1\src\app.ts">
@@ -413,7 +413,7 @@
       </file>
     </package>
     <package name="src.app.validations.city">
-      <metrics statements="40" coveredstatements="38" conditionals="6" coveredconditionals="4" methods="2" coveredmethods="2"/>
+      <metrics statements="40" coveredstatements="38" conditionals="5" coveredconditionals="3" methods="2" coveredmethods="2"/>
       <file name="createCityValidation.ts" path="C:\Users\andre.teixeira\Documents\PROJETOS\proj_1\src\app\validations\city\createCityValidation.ts">
         <metrics statements="19" coveredstatements="17" conditionals="3" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -437,28 +437,28 @@
         <line num="19" count="2" type="stmt"/>
       </file>
       <file name="getAllCityValidation.ts" path="C:\Users\andre.teixeira\Documents\PROJETOS\proj_1\src\app\validations\city\getAllCityValidation.ts">
-        <metrics statements="21" coveredstatements="21" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <metrics statements="21" coveredstatements="21" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="5" count="3" type="stmt"/>
-        <line num="6" count="3" type="stmt"/>
-        <line num="7" count="3" type="stmt"/>
-        <line num="8" count="3" type="stmt"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="10" count="3" type="stmt"/>
-        <line num="11" count="3" type="stmt"/>
-        <line num="12" count="3" type="stmt"/>
-        <line num="13" count="3" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
-        <line num="15" count="3" type="stmt"/>
-        <line num="16" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="17" count="3" type="stmt"/>
-        <line num="18" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="21" count="3" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
       </file>
     </package>
     <package name="src.app.validations.person">
@@ -548,102 +548,6 @@
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="3" type="stmt"/>
-      </file>
-    </package>
-    <package name="src.infra.database.migrations">
-      <metrics statements="87" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-      <file name="1641581543510-CreateCity.ts" path="C:\Users\andre.teixeira\Documents\PROJETOS\proj_1\src\infra\database\migrations\1641581543510-CreateCity.ts">
-        <metrics statements="34" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
-      </file>
-      <file name="1641583311790-CreatePerson.ts" path="C:\Users\andre.teixeira\Documents\PROJETOS\proj_1\src\infra\database\migrations\1641583311790-CreatePerson.ts">
-        <metrics statements="53" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="51" count="1" type="stmt"/>
-        <line num="52" count="1" type="stmt"/>
-        <line num="53" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.infra.database.postgres">
