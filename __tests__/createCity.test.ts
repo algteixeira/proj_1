@@ -42,7 +42,7 @@ describe('This test try to insert an existent city', () => {
     expect(response.status).toBe(201);
 
     response = await request(app).post('/cidade').send(city1);
-
     expect(response.status).toBe(400);
   });
 });
+

@@ -17,35 +17,43 @@ afterEach(async() => {
 
 
 describe('This test should run fine', () => {
-  it('should return people', async () => {
+  test('should return people', async() => {
     const response = await request(app).get('/cidade/?name=jota');
+    expect(response.body.total).toBe(0);
 
     expect(response.status).toBe(200);
-  });
-});
+  })
+  /*it('should return people', async () => {
+    const response = await request(app).get('/cidade/?name=jota');
+    expect(response.body.total).toBe(0);
+
+    expect(response.status).toBe(200);
+  });*/
 
 
-describe('This test should run fine but', () => {
-    it('should return no one', async () => {
+
+
+    test('should return no one', async () => {
       const response = await request(app).get('/cidade/?name=francisco&page=1&limit=2');
   
       expect(response.status).toBe(200);
     });
-});
 
-describe('This test should go wrong, because', () => {
-    it('have an invalid query', async () => {
+
+
+    test('have an invalid query', async () => {
       const response = await request(app).get('/cidade/?state=acaraje');
   
       expect(response.status).toBe(400);
     });
-});
 
-describe('This test should go wrong, because', () => {
-  it('have an invalid query', async () => {
+
+
+  test('have an invalid query', async () => {
     const response = await request(app).get('/cidade/?alucination=acaraje&name=a');
 
     expect(response.status).toBe(400);
   });
 });
+
 

@@ -46,7 +46,7 @@ describe('This test should delete a person and', () => {
 describe('This test gives an unexistent id and', () => {
     it('should return a 404 not found error', async () => {
       const response = await request(app).get('/pessoa/7b82d9f6-0ddf-4fac-abb8-404a158bd876');
-  
+      expect(response.body).toBe(`7b82d9f6-0ddf-4fac-abb8-404a158bd876 haven't been found in the database.`);
       expect(response.status).toBe(404);
     });
 });

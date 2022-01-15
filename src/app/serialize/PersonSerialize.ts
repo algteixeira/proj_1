@@ -1,4 +1,4 @@
-const serialize = ({ id, name, sex, birthday, age, city_id }) => ({ id, name, sex, birthday, age, city_id });
+const serialize = ({ id, name, sex, birthday, age, city_id }) => ({ id, name, gender: sex, birthday, age, city_id });
 
 const serializePeople = ( docs, totalDocs ) => ({
   People: docs.map(serialize),
