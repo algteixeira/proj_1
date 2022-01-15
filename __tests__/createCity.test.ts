@@ -27,14 +27,14 @@ describe('This test should run fine', () => {
   });
 });
 
-describe('This test try to insert an existent city', () => {
-  it('should return a bad request (400)', async () => {
+describe('controllers / CityController / post', () => {
+  test('should return a bad request (400) when try to insert the same city twice', async () => {
     const city1 = {
-      'name': 'insanen123445ow',
+      'name': 'Testando',
       'state': 'SC'
     };
     const city2 = {
-      'name': 'insanen123445ow',
+      'name': 'Testando',
       'state': 'SC'
     };
     let response = await request(app).post('/cidade').send(city1);
