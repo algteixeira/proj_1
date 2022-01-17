@@ -1,23 +1,23 @@
-import "reflect-metadata";
+import 'reflect-metadata';
 
-import express from "express";
+import express from 'express';
 
-import swaggerUi from "swagger-ui-express";
+import swaggerUi from 'swagger-ui-express';
 
-import {routes} from "./routes/index"; 
+import { routes } from './routes/index';
 
-import swaggerDocs from "./swagger.json";
+import swaggerDocs from './swagger.json';
 
-import "./infra/database/postgres";
-import { connect } from "./infra/database/postgres";
+import './infra/database/postgres';
+
+import { connect } from './infra/database/postgres';
 
 const app = express();
 
-
 app.use(express.json());
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(routes);
 
-export {app};
+export { app };

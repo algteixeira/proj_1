@@ -1,7 +1,7 @@
 const serialize = ({ id, name, state }) => ({ id, name, state });
 
-const serializeCity = ( docs, totalDocs ) => ({
+const serializeCity = (docs, totalDocs) => ({
   Cities: docs.map(serialize),
-  total: totalDocs
+  total: totalDocs,
 });
 export { serializeCity };

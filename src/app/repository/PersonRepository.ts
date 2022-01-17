@@ -2,29 +2,30 @@ import { getRepository } from 'typeorm';
 import { Person } from '../entities/Person';
 
 export class PersonRepository {
-  async create(payload) : Promise<Person | Error > {    
+  async create(payload): Promise<Person | Error> {
     const repo = getRepository(Person);
-    const {name, sex, birthday, age, city_id} = payload;
-    const person = repo.create({name, sex, birthday, age, city_id});
+    const { name, sex, birthday, age, city_id } = payload;
+    const person = repo.create({ name, sex, birthday, age, city_id });
     await repo.save(person);
     return person;
   }
 
-  async get(payload) : Promise<Object> {
+  async get(payload): Promise<unknown> {
     const limit = payload.limit || 3;
-    const page=payload.page || 1;
-    const skip = (page-1) * limit ;
+    const page = payload.page || 1;
+    const skip = (page - 1) * limit;
     delete payload.limit;
     delete payload.page;
     const repo = getRepository(Person);
     const data = await repo.findAndCount({
-        where: payload, take: limit,
-        skip: skip
+      where: payload,
+      take: limit,
+      skip: skip,
     });
     return data;
   }
 
-  async getById(payload) : Promise<Person> {
+  async getById(payload): Promise<Person> {
     const repo = getRepository(Person);
     const person = await repo.findByIds(payload);
     return person[0];
@@ -32,10 +33,10 @@ export class PersonRepository {
 
   async delete(payload) {
     const repo = getRepository(Person);
-    return await repo.delete({id: payload})
+    return await repo.delete({ id: payload });
   }
 
-  async update(payload) : Promise<Person> {
+  async update(payload): Promise<Person> {
     const repo = getRepository(Person);
     const person = await repo.findOne(payload.id);
     person.name = payload.name || person.name;

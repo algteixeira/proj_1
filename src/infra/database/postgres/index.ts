@@ -1,7 +1,7 @@
-import { createConnection } from "typeorm";
+import { createConnection } from 'typeorm';
 
 createConnection();
 
 export const connect = async () => {
-    await createConnection();
-}
+  await createConnection();
+};
