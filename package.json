@@ -21,7 +21,7 @@
   "scripts": {
     "dev": "ts-node-dev --transpile-only src/server.ts",
     "typeorm": "ts-node-dev node_modules/typeorm/cli.js",
-    "test": "jest --detectOpenHandles --runInBand --coverage"
+    "test": "jest --coverage --runInBand --detectOpenHandles"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
@@ -31,6 +31,7 @@
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
     "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.7.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.3.0",

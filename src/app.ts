@@ -14,6 +14,8 @@ import { connect } from './infra/database/postgres';
 
 const app = express();
 
+connect();
+
 app.use(express.json());
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
