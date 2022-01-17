@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 import { Request, Response } from 'express';
 import { PersonService } from '../services/PersonService';
 

@@ -1,4 +1,3 @@
-/* eslint-disable new-cap */
 import { Entity, Column, PrimaryColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 import { City } from './City';

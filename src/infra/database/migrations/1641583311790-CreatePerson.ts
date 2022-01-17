@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class CreatePerson1641583311790 implements MigrationInterface {

@@ -11,8 +11,8 @@ const cityRepo = new CityRepository();
 export class PersonService {
   async create(payload): Promise<Person | Error> {
     const { city_id, birthday } = payload;
-    const registrated_city = await cityRepo.get({ id: city_id });
-    if (registrated_city[1] === 0) {
+    const registratedCity = await cityRepo.get({ id: city_id });
+    if (registratedCity[1] === 0) {
       throw new NotFound(city_id);
     }
     payload.age = getAge(birthday);

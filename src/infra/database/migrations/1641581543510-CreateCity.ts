@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class CreateCity1641581543510 implements MigrationInterface {
