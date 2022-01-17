@@ -17,7 +17,7 @@ afterEach(async() => {
 
 
 describe('This test should delete a person and', () => {
-  it('should return an empty body with 204 statuscode', async () => {
+  test('should return an empty body with 204 statuscode', async () => {
     const city = {
       'name': 'Pelotas',
       'state': 'RS'
@@ -44,7 +44,7 @@ describe('This test should delete a person and', () => {
 
 
 describe('This test gives an unexistent id and', () => {
-    it('should return a 404 not found error', async () => {
+    test('should return a 404 not found error', async () => {
       const response = await request(app).get('/pessoa/7b82d9f6-0ddf-4fac-abb8-404a158bd876');
       expect(response.body).toBe(`7b82d9f6-0ddf-4fac-abb8-404a158bd876 haven't been found in the database.`);
       expect(response.status).toBe(404);
@@ -52,7 +52,7 @@ describe('This test gives an unexistent id and', () => {
 });
 
 describe('This test should go wrong, because', () => {
-    it('have an invalid id format', async () => {
+    test('have an invalid id format', async () => {
       const response = await request(app).get('/pessoa/7b82d9f6-0dzy-4fac-abb8-404a158bd866');
   
       expect(response.status).toBe(400);

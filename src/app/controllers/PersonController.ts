@@ -14,12 +14,8 @@ export class PersonController {
     }
 
     async get (request: Request, response: Response) {
-        try {
-            const result = await personService.get(request.query);           
-            return response.status(200).json(result);
-        } catch (error) {
-            return response.status(400).json(error.description);
-        }
+        const result = await personService.get(request.query);           
+        return response.status(200).json(result);
     }
 
     async getById (request: Request, response: Response) {

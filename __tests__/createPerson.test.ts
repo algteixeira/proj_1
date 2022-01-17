@@ -62,7 +62,7 @@ describe('This test should run fine', () => {
 
 
 
-  it('should return a not found', async () => {
+  test('should return a not found', async () => {
     const pessoa = {
       'name': 'jota',
       'birthday': '19/08/1997',

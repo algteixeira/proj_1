@@ -17,25 +17,10 @@ afterEach(async() => {
 
 
 describe('This test should run fine', () => {
-  test('should return people', async() => {
-    const response = await request(app).get('/cidade/?name=jota');
-    expect(response.body.total).toBe(0);
-
-    expect(response.status).toBe(200);
-  })
-  /*it('should return people', async () => {
-    const response = await request(app).get('/cidade/?name=jota');
-    expect(response.body.total).toBe(0);
-
-    expect(response.status).toBe(200);
-  });*/
-
-
-
 
     test('should return no one', async () => {
       const response = await request(app).get('/cidade/?name=francisco&page=1&limit=2');
-  
+      
       expect(response.status).toBe(200);
     });
 
