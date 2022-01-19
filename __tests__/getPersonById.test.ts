@@ -20,8 +20,8 @@ afterEach(async () => {
 describe('Controllers / PersonController / get{:id}', () => {
   test('should return a person', async () => {
     const city = {
-      name: 'Pelotas',
-      state: 'RS',
+      name: 'Jamalville',
+      state: 'SC',
     };
     let response = await request(app).post('/cidade').send(city);
 
