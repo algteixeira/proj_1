@@ -17,7 +17,7 @@ afterEach(async () => {
   }
 });
 
-describe('This test should run fine and', () => {
+describe('Controllers / PersonController / get{:id}', () => {
   test('should return a person', async () => {
     const city = {
       name: 'Pelotas',
@@ -38,27 +38,30 @@ describe('This test should run fine and', () => {
     expect(response.status).toBe(201);
 
     response = await request(app).get(`/pessoa/${response.body.id}`);
-
+    expect(response.body.name).toBe('jota');
+    expect(response.body.sex).toBe('MASCULINO');
+    expect(response.body.birthday).toBe('19/08/1997');
+    expect(response.body.age).toBe('24');
     expect(response.status).toBe(200);
   });
-});
 
-describe('This test uses an unexistent id and', () => {
   test('should return a notFound(404)', async () => {
     const response = await request(app).get(
       '/pessoa/117928ec-0735-4bf3-9990-90573ebbc1c1',
     );
-
+    expect(response.body).toBe(
+      `117928ec-0735-4bf3-9990-90573ebbc1c1 haven't been found in the database.`,
+    );
     expect(response.status).toBe(404);
   });
-});
 
-describe('This test have an invalid id format and', () => {
   test('should return a bad request (400) error', async () => {
     const response = await request(app).get(
       '/pessoa/117928ec-0735-4bf3-9990-90573ebbc1z1',
     );
-
+    expect(response.body.details[0].message).toBe(
+      '"id" with value "117928ec-0735-4bf3-9990-90573ebbc1z1" fails to match the required pattern: /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/',
+    );
     expect(response.status).toBe(400);
   });
 });
