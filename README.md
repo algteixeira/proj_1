@@ -1,6 +1,9 @@
 # proj_1
 
 This is the a project that i'm doing for Compasso UOL fast track program.
+With this project you can have something like a government system where you can
+registrate cities and then cadastrate people, vinculating them to existent cities in the
+database!
 
 
 
@@ -11,8 +14,8 @@ This is the a project that i'm doing for Compasso UOL fast track program.
 
 ## Features
 
-- CRUD for people
-- CRUD for cities
+- CRUD for people (registrate a new person, update it's name, get by ID, get with queries and delete someone)
+- CRUD for cities (registrate a new city and get cities by their name or state)
 - Feature tests
 - page&limit pagination scheme
 
@@ -51,6 +54,22 @@ Install dependencies
 
 ```bash
   yarn install
+```
+
+Customize ormconfig.json in order to adapt it to your database configuration
+
+```javascript
+  {
+    "name": "default",
+    "type": "postgres",
+    "host": "your_host",
+    "port": "your_db_port",
+    "username": "your_user",
+    "password": "your_pwd",
+    "database": "your_db_name"
+  }
+  /* KEEP ALL OTHER CONFIGURATIONS THE SAME */
+
 ```
 
 Start the server
