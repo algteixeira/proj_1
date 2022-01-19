@@ -2,15 +2,15 @@ import { getRepository } from 'typeorm';
 import { Person } from '../entities/Person';
 
 export class PersonRepository {
-  async create(payload): Promise<Person | Error> {
+  async create(payload) {
     const repo = getRepository(Person);
     const { name, sex, birthday, age, city_id } = payload;
-    const person = repo.create({ name, sex, birthday, age, city_id });
+    const person = repo.create({ name, sex, birthday, city_id });
     await repo.save(person);
     return person;
   }
 
-  async get(payload): Promise<unknown> {
+  async get(payload) {
     const limit = payload.limit || 3;
     const page = payload.page || 1;
     const skip = (page - 1) * limit;
@@ -25,7 +25,7 @@ export class PersonRepository {
     return data;
   }
 
-  async getById(payload): Promise<Person> {
+  async getById(payload) {
     const repo = getRepository(Person);
     const person = await repo.findByIds(payload);
     return person[0];
@@ -36,7 +36,7 @@ export class PersonRepository {
     return await repo.delete({ id: payload });
   }
 
-  async update(payload): Promise<Person> {
+  async update(payload) {
     const repo = getRepository(Person);
     const person = await repo.findOne(payload.id);
     person.name = payload.name || person.name;

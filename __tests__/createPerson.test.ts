@@ -35,7 +35,7 @@ describe('Controllers / PersonController / post', () => {
     };
     response = await request(app).post('/pessoa').send(pessoa);
     expect(response.body.name).toBe('jota');
-    expect(response.body.sex).toBe('MASCULINO');
+    expect(response.body.gender).toBe('MASCULINO');
     expect(response.body.birthday).toBe('19/08/1997');
     expect(response.body.age).toBe(24);
     expect(response.status).toBe(201);

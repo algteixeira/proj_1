@@ -28,10 +28,6 @@ export class CreatePerson1641583311790 implements MigrationInterface {
             name: 'birthday',
             type: 'varchar',
           },
-          {
-            name: 'age',
-            type: 'numeric',
-          },
         ],
         foreignKeys: [
           {
@@ -49,4 +45,4 @@ export class CreatePerson1641583311790 implements MigrationInterface {
     await queryRunner.dropTable('videos');
   }
 }
-// this is the relevant
+

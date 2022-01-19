@@ -13,8 +13,6 @@ export class Person {
   @Column()
   birthday: string;
   @Column()
-  age: number;
-  @Column()
   city_id: string;
   @ManyToOne(() => City)
   @JoinColumn({ name: 'city_id' })

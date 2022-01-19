@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { serialize } from '../serialize/PersonSerialize';
 import { PersonService } from '../services/PersonService';
 
 const personService = new PersonService();
@@ -7,7 +8,7 @@ export class PersonController {
   async create(request: Request, response: Response) {
     try {
       const result = await personService.create(request.body);
-      return response.status(201).json(result);
+      return response.status(201).json(serialize(result));
     } catch (error) {
       return response.status(error.statusCode).json(error.description);
     }
@@ -21,7 +22,7 @@ export class PersonController {
   async getById(request: Request, response: Response) {
     try {
       const result = await personService.getById(request.params.id);
-      return response.status(200).json(result);
+      return response.status(200).json(serialize(result));
     } catch (error) {
       return response.status(error.statusCode).json(error.description);
     }
