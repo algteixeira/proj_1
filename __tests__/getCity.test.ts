@@ -26,7 +26,7 @@ describe('Controllers / City / get', () => {
     let response = await request(app).post('/cidade').send(city);
     expect(response.status).toBe(201);
     response = await request(app).get('/cidade/?name=Pelotas');
-    expect(response.body.Cities[0].name).toBe('Pelotas');
+    expect(response.body.cities[0].name).toBe('Pelotas');
     expect(response.status).toBe(200);
   });
 
