@@ -17,8 +17,8 @@ afterEach(async () => {
   }
 });
 
-describe('This test should run fine and', () => {
-  it('should return a person updated with the given name', async () => {
+describe('Controllers / PersonController / update', () => {
+  test('should return a person updated with the given name', async () => {
     const city = {
       name: 'Pelotas',
       state: 'RS',
@@ -46,12 +46,12 @@ describe('This test should run fine and', () => {
       .put(`/pessoa/${response.body.id}`)
       .send(personMock);
 
+    expect(response.body.name).toBe('bulla');
+
     expect(response.status).toBe(200);
   });
-});
 
-describe('This test uses an unexistent id and', () => {
-  it('should return a notFound(404)', async () => {
+  test('should return a notFound(404) because person was not created', async () => {
     const personMock = {
       name: 'testinho',
     };
@@ -59,32 +59,32 @@ describe('This test uses an unexistent id and', () => {
       .put('/pessoa/6c026b47-9fa6-4104-9860-6e61f51f1ff8')
       .send(personMock);
 
+    expect(response.body).toBe(`testinho haven't been found in the database.`);
+
     expect(response.status).toBe(404);
   });
-});
 
-describe('This test ask an update with a non-acceptable type in the body', () => {
-  it('should return a notFound(404)', async () => {
+  test('should return a badRequest(400) because variola is not a valid field', async () => {
     const personMock = {
       variola: 'positivo',
     };
     const response = await request(app)
       .put('/pessoa/117928ec-0735-4bf3-9990-90573ebbc1e1')
       .send(personMock);
-
+    expect(response.body.details[1].message).toBe('"variola" is not allowed');
     expect(response.status).toBe(400);
   });
-});
 
-describe('This test have an invalid id format and', () => {
-  it('should return a bad request (400) error', async () => {
+  test('should return a bad request (400) error because of wrong id format', async () => {
     const personMock = {
       name: 'testei',
     };
     const response = await request(app)
       .put('/pessoa/117928ec-0735-4bf3-9990-90573ebbc1z1')
       .send(personMock);
-
+    expect(response.body.details[0].message).toBe(
+      '"id" with value "117928ec-0735-4bf3-9990-90573ebbc1z1" fails to match the required pattern: /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/',
+    );
     expect(response.status).toBe(400);
   });
 });
