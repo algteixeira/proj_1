@@ -17,9 +17,11 @@
     "uuid": "^8.3.2"
   },
   "scripts": {
-    "dev": "ts-node-dev --transpile-only src/server.ts",
-    "typeorm": "ts-node-dev node_modules/typeorm/cli.js",
-    "test": "jest --coverage --runInBand --detectOpenHandles"
+    "dev": "cross-env CONNECTION_NAME=development ts-node-dev --transpile-only src/server.ts",
+    "typeorm": "cross-env CONNECTION_NAME=development ts-node-dev node_modules/typeorm/cli.js",
+    "test": "cross-env CONNECTION_NAME=tests jest --runInBand --detectOpenHandles",
+    "test-server": "cross-env CONNECTION_NAME=tests ts-node-dev src/server.ts",
+    "testorm": "cross-env CONNECTION_NAME=tests ts-node-dev node_modules/typeorm/cli.js"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

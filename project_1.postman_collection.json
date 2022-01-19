@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "183787e3-f6fe-49d2-a818-dcb1dcbd0a34",
+		"name": "project_1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:3000/cidade/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Mariana\",\r\n    \"state\": \"RS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/cidade/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cidade",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/cidade/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/cidade/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"cidade",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/pessoa/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"x123aves\",\r\n    \"sex\": \"MASCULINO\",\r\n    \"birthday\": \"19/08/1997\",\r\n    \"city_id\": \"46a9122c-5e86-4a4e-84ee-f856eb7df14b\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/pessoa/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pessoa",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/pessoa/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/pessoa/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pessoa",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/pessoa/dd38bdc9-116d-4de5-95cf-d6261a26af53",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"xeske\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/pessoa/dd38bdc9-116d-4de5-95cf-d6261a26af53",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pessoa",
+						"dd38bdc9-116d-4de5-95cf-d6261a26af53"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/pessoa/b25a6498-a891-4b0f-b94a-5e8dc89e8417",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/pessoa/b25a6498-a891-4b0f-b94a-5e8dc89e8417",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pessoa",
+						"b25a6498-a891-4b0f-b94a-5e8dc89e8417"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
