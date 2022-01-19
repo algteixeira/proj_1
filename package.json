@@ -19,7 +19,7 @@
   "scripts": {
     "dev": "cross-env CONNECTION_NAME=development ts-node-dev --transpile-only src/server.ts",
     "typeorm": "cross-env CONNECTION_NAME=development ts-node-dev node_modules/typeorm/cli.js",
-    "test": "cross-env CONNECTION_NAME=tests jest --runInBand --detectOpenHandles",
+    "test": "cross-env CONNECTION_NAME=tests jest --coverage --runInBand --detectOpenHandles",
     "test-server": "cross-env CONNECTION_NAME=tests ts-node-dev src/server.ts",
     "testorm": "cross-env CONNECTION_NAME=tests ts-node-dev node_modules/typeorm/cli.js"
   },
