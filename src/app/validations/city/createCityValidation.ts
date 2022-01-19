@@ -1,5 +1,6 @@
 import Joi from 'joi';
 import { NextFunction, Request, Response } from 'express';
+import { enumUf } from '../../utils/enumUF';
 
 export default async (
   request: Request,
@@ -9,7 +10,9 @@ export default async (
   try {
     const schema = Joi.object({
       name: Joi.string().trim().min(2).required(),
-      state: Joi.string().trim().min(2).required(),
+      state: Joi.string()
+        .valid(...Object.values(enumUf))
+        .required(),
     });
 
     const { error } = schema.validate(request.body, { abortEarly: false });

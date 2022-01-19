@@ -2,6 +2,7 @@ import Joi from 'joi';
 import Extension from '@joi/date';
 import { NextFunction, Request, Response } from 'express';
 import { idRegex } from '../../utils/regex';
+import { genders } from '../../utils/genders';
 
 const JoiDate = Joi.extend(Extension);
 
@@ -13,7 +14,9 @@ export default async (
   try {
     const schema = Joi.object({
       name: Joi.string().trim().min(3).required(),
-      sex: Joi.string().valid('MASCULINO', 'FEMININO').required(),
+      sex: Joi.string()
+        .valid(...Object.values(genders))
+        .required(),
       birthday: JoiDate.date().format('DD/MM/YYYY').required(),
       city_id: Joi.string().regex(idRegex()).required(),
     });

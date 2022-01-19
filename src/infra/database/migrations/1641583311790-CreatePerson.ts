@@ -18,6 +18,7 @@ export class CreatePerson1641583311790 implements MigrationInterface {
           {
             name: 'sex',
             type: 'varchar',
+            enum: ['MASCULINO', 'FEMININO', 'OUTROS']
           },
           {
             name: 'city_id',
