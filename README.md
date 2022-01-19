@@ -57,6 +57,7 @@ Install dependencies
 ```
 
 Customize ormconfig.json in order to adapt it to your database configuration
+\n Don't forget to create your own local databases!
 
 ```javascript
   {
