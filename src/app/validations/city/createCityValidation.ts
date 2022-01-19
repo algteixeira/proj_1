@@ -9,37 +9,7 @@ export default async (
   try {
     const schema = Joi.object({
       name: Joi.string().trim().min(2).required(),
-      state: Joi.string()
-        .valid(
-          'AC',
-          'AL',
-          'AP',
-          'AM',
-          'BA',
-          'CE',
-          'DF',
-          'ES',
-          'GO',
-          'MA',
-          'MT',
-          'MS',
-          'MG',
-          'PA',
-          'PB',
-          'PR',
-          'PE',
-          'PI',
-          'RJ',
-          'RN',
-          'RS',
-          'RO',
-          'RR',
-          'SP',
-          'SC',
-          'SE',
-          'TO',
-        )
-        .required(),
+      state: Joi.string().trim().min(2).required(),
     });
 
     const { error } = schema.validate(request.body, { abortEarly: false });

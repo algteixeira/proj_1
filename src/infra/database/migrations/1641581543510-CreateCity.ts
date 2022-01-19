@@ -1,4 +1,5 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { enumUf } from '../../../app/utils/enumUF';
 
 export class CreateCity1641581543510 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -19,6 +20,7 @@ export class CreateCity1641581543510 implements MigrationInterface {
           {
             name: 'state',
             type: 'varchar',
+            enum: enumUf,
           },
         ],
       }),
