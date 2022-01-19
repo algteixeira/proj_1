@@ -23,6 +23,7 @@ database!
 ## Used technologies
 
 **Server:** 
+- Node v14.17.4
 - Express v4.17.2
 - TypeORM v0.2.41
 - Reflect-Metadata v0.1.13
@@ -57,7 +58,7 @@ Install dependencies
 ```
 
 Customize ormconfig.json in order to adapt it to your database configuration
-\n Don't forget to create your own local databases!
+Don't forget to create your own local databases!
 
 ```javascript
   {
