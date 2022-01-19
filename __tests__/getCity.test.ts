@@ -17,8 +17,8 @@ afterEach(async () => {
   }
 });
 
-describe('This test should run fine', () => {
-  it('should return cities', async () => {
+describe('Controllers / City / get', () => {
+  test('should return cities', async () => {
     const city = {
       name: 'Pelotas',
       state: 'RS',
@@ -29,19 +29,15 @@ describe('This test should run fine', () => {
     expect(response.body.Cities[0].name).toBe('Pelotas');
     expect(response.status).toBe(200);
   });
-});
 
-describe('This test should run fine', () => {
-  it('should return cities', async () => {
+  test('should return cities', async () => {
     const response = await request(app).get('/cidade/?state=RS');
 
     expect(response.status).toBe(200);
     expect(response.body.total).toBe(0);
   });
-});
 
-describe('This test should run fine', () => {
-  it('should return cities', async () => {
+  test('should return cities', async () => {
     const city = {
       name: 'Pelotas',
       state: 'RS',
@@ -52,18 +48,14 @@ describe('This test should run fine', () => {
     expect(response.body.total).toBe(1);
     expect(response.status).toBe(200);
   });
-});
 
-describe('This test should go wrong', () => {
-  it('have an invalid state', async () => {
+  test('have an invalid state', async () => {
     const response = await request(app).get('/cidade/?state=acaraje');
     expect(response.body._original.state).toBe('acaraje');
     expect(response.status).toBe(400);
   });
-});
 
-describe('This test should go wrong', () => {
-  it('have an invalid query', async () => {
+  test('have an invalid query', async () => {
     const response = await request(app).get('/cidade/?felipe=santos');
     expect(response.body.details[0].message).toBe('"felipe" is not allowed');
     expect(response.status).toBe(400);

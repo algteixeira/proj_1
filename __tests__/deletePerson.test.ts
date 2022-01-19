@@ -41,11 +41,9 @@ describe('This test should delete a person and', () => {
 
     expect(response.status).toBe(204);
   });
-});
 
-describe('This test gives an unexistent id and', () => {
-  test('should return a 404 not found error', async () => {
-    const response = await request(app).get(
+  test('should return a 404 not found error because of unexistent id', async () => {
+    const response = await request(app).delete(
       '/pessoa/7b82d9f6-0ddf-4fac-abb8-404a158bd876',
     );
     expect(response.body).toBe(
@@ -53,11 +51,9 @@ describe('This test gives an unexistent id and', () => {
     );
     expect(response.status).toBe(404);
   });
-});
 
-describe('This test should go wrong, because', () => {
-  test('have an invalid id format', async () => {
-    const response = await request(app).get(
+  test('throw 400 because it haves an invalid id format', async () => {
+    const response = await request(app).delete(
       '/pessoa/7b82d9f6-0dzy-4fac-abb8-404a158bd866',
     );
 
