@@ -38,7 +38,6 @@ describe('This test should delete a person and', () => {
     expect(response.status).toBe(201);
 
     response = await request(app).delete(`/pessoa/${response.body.id}`);
-
     expect(response.status).toBe(204);
   });
 

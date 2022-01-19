@@ -20,7 +20,7 @@ export class PersonService {
     return person;
   }
 
-  async get(payload): Promise<unknown> {
+  async get(payload): Promise<object> {
     const person = await personRepo.get(payload);
     const data = serializePeople(person['0'], person['1']);
     return data;
@@ -34,12 +34,11 @@ export class PersonService {
     return person;
   }
 
-  async delete(payload) {
+  async delete(payload): Promise<void> {
     const deletedPerson = await personRepo.delete(payload);
     if (deletedPerson.affected === 0) {
       throw new NotFound(payload);
     }
-    return deletedPerson;
   }
 
   async update(payload): Promise<Error | Person> {

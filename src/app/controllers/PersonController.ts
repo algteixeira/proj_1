@@ -29,8 +29,8 @@ export class PersonController {
 
   async delete(request: Request, response: Response) {
     try {
-      const result = await personService.delete(request.params.id);
-      return response.status(204).json(result);
+      await personService.delete(request.params.id);
+      return response.status(204).json({});
     } catch (error) {
       return response.status(error.statusCode).json(error.description);
     }
