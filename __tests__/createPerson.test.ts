@@ -17,8 +17,8 @@ afterEach(async () => {
   }
 });
 
-describe('This test should run fine', () => {
-  it('should create a person', async () => {
+describe('Controllers / PersonController / post', () => {
+  test('should create a person', async () => {
     const city = {
       name: 'Pelotas',
       state: 'RS',
@@ -34,11 +34,14 @@ describe('This test should run fine', () => {
       sex: 'MASCULINO',
     };
     response = await request(app).post('/pessoa').send(pessoa);
-
+    expect(response.body.name).toBe('jota');
+    expect(response.body.sex).toBe('MASCULINO');
+    expect(response.body.birthday).toBe('19/08/1997');
+    expect(response.body.age).toBe(24);
     expect(response.status).toBe(201);
   });
 
-  it('should create a person', async () => {
+  test('should return a bad request because chuveiro is not allowed', async () => {
     const city = {
       name: 'Pelotas',
       state: 'RS',
@@ -55,11 +58,11 @@ describe('This test should run fine', () => {
       sex: 'MASCULINO',
     };
     response = await request(app).post('/pessoa').send(pessoa);
-
+    expect(response.body.details[0].message).toBe('"chuveiro" is not allowed');
     expect(response.status).toBe(400);
   });
 
-  test('should return a not found', async () => {
+  test('should return a not found beucase given city doesnt exists', async () => {
     const pessoa = {
       name: 'jota',
       birthday: '19/08/1997',
@@ -67,7 +70,9 @@ describe('This test should run fine', () => {
       sex: 'MASCULINO',
     };
     const response = await request(app).post('/pessoa').send(pessoa);
-
+    expect(response.body).toBe(
+      `0aaaf282-a39a-4ae0-827c-3b16d09caa0d haven't been found in the database.`,
+    );
     expect(response.status).toBe(404);
   });
 });

@@ -17,19 +17,18 @@ afterEach(async () => {
   }
 });
 
-describe('This test should run fine', () => {
+describe('controllers / CityController / post', () => {
   it('should create a city', async () => {
     const city = {
       name: 'xuva',
       state: 'SC',
     };
     const response = await request(app).post('/cidade').send(city);
-
+    expect(response.body.name).toBe(city.name);
+    expect(response.body.state).toBe(city.state);
     expect(response.status).toBe(201);
   });
-});
 
-describe('controllers / CityController / post', () => {
   test('should return a bad request (400) when try to insert the same city twice', async () => {
     const city1 = {
       name: 'Testando',
@@ -40,6 +39,7 @@ describe('controllers / CityController / post', () => {
     expect(response.status).toBe(201);
 
     response = await request(app).post('/cidade').send(city1);
+    expect(response.body).toBe('Testando already exists in the database.');
     expect(response.status).toBe(400);
   });
 });
