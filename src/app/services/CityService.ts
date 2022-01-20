@@ -1,6 +1,5 @@
 import { CityRepository } from '../repository/CityRepository';
 import { City } from '../entities/City';
-import { serializeCity } from '../serialize/CitySerialize';
 import { AlreadyExists } from '../errors/alreadyExists';
 
 const cityRepo = new CityRepository();
@@ -16,9 +15,8 @@ export class CityService {
     return city;
   }
 
-  async get(payload): Promise<unknown> {
+  async get(payload): Promise<City[]> {
     const city = await cityRepo.get(payload);
-    const data = serializeCity(city['0'], city['1']);
-    return data;
+    return city;
   }
 }

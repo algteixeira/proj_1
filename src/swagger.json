@@ -29,9 +29,6 @@
                     "data_nascimento": {
                         "type": "string"
                     },
-                    "age": {
-                        "type": "number"
-                    },
                     "city_id": {
                         "type": "string"
                     }
